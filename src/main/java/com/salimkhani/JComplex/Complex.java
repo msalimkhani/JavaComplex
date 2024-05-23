@@ -1,6 +1,5 @@
 package com.salimkhani.JComplex;
 
-import org.jetbrains.annotations.NotNull;
 
 /**
  * A complex number z is a number of the form z = x + yi, where x and y
@@ -36,8 +35,6 @@ public class Complex
     {
         return "(" + m_real + getImaginarySignedString() + "i)";
     }
-    @org.jetbrains.annotations.NotNull
-    @org.jetbrains.annotations.Contract(pure = true)
     private String getImaginarySignedString()
     {
         if(m_imaginary > 0)
@@ -47,12 +44,12 @@ public class Complex
     public boolean isReal() {return (m_imaginary == 0.0);}
     public boolean isImaginary() {return (m_imaginary != 0.0);}
     public boolean equals(double real, double imaginary){ return (this.m_real == real && this.m_imaginary == imaginary);}
-    public boolean equals(@NotNull Complex another){return (this.m_real == another.m_real && this.m_imaginary == another.m_imaginary);}
+    public boolean equals( Complex another){return (this.m_real == another.m_real && this.m_imaginary == another.m_imaginary);}
     public double magnitude()
     {
         return abs(this);
     }
-    public static double abs(@NotNull Complex value)
+    public static double abs( Complex value)
     {
         return Hypot(value.m_real, value.m_imaginary);
     }
@@ -64,35 +61,35 @@ public class Complex
     {
         return Math.atan2(m_imaginary, m_real);
     }
-    public Complex add(@NotNull Complex right)
+    public Complex add( Complex right)
     {
         var c = this;
         c.m_real += right.m_real;
         c.m_imaginary += right.m_imaginary;
         return c;
     }
-    public Complex addNew(@NotNull Complex right)
+    public Complex addNew( Complex right)
     {
         var c = new Complex(m_real, m_imaginary);
         c.m_real += right.m_real;
         c.m_imaginary += right.m_imaginary;
         return c;
     }
-    public Complex subtract(@NotNull Complex right)
+    public Complex subtract(Complex right)
     {
         var c = this;
         c.m_real -= right.m_real;
         c.m_imaginary -= right.m_imaginary;
         return c;
     }
-    public Complex subtractNew(@NotNull Complex right)
+    public Complex subtractNew(Complex right)
     {
         var c = new Complex(this.m_real, this.m_imaginary);
         c.m_real -= right.m_real;
         c.m_imaginary -= right.m_imaginary;
         return c;
     }
-    public Complex multiply(@NotNull Complex right)
+    public Complex multiply(Complex right)
     {
         double result_realpart = (this.m_real * right.m_real) - (this.m_imaginary * right.m_imaginary);
         double result_imaginarypart = (this.m_imaginary * right.m_real) + (this.m_real * right.m_imaginary);
@@ -100,7 +97,7 @@ public class Complex
         this.m_imaginary = result_imaginarypart;
         return this;
     }
-    public Complex divide(@NotNull Complex right)
+    public Complex divide(Complex right)
     {
         // Division : Smith's formula.
         double a = this.m_real;
